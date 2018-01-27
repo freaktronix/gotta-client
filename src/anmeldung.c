@@ -11,26 +11,23 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#define IUsernameLen 16 							// Maximale Laenge eines Benutzernamens
-#define IUsernameLen_scanf "%" IUsernameLen "s" 	// 
-
-#define IUserpasswordLen 32 						// Maximale Laenge eines Benutzernamens
-#define IUserpasswordLen_scanf "%" IUsernameLen "s" // 
+#define USERNAME 16 					// Maximale Laenge eines Benutzernamens
+#define USERPASSWORD 32 				// Maximale Laenge eines Benutzernamens
 
 int main(void)
 {
 	int iSocket, iConnect;	
-	char cUsername[iUsernameLen];			// Benutzername
-	char cUserpassword[iUserpasswordLen];	// Benutzerpasswort
+	char cUsername[USERNAME];			// Benutzername
+	char cUserpassword[USERPASSWORD];		// Benutzerpasswort
 
-	memset(cUsername, 0, sizeof(char) * IUsernameLen);
-	memset(cUserpasword, 0, sizeof(char) * IUserpasswordLen);
+	memset(cUsername, 0, sizeof(char) * USERNAME);
+	memset(cUserpasword, 0, sizeof(char) * USERPASSWORD);
 
-	printf("Willkommen bei gotta.\n\nBitte geben Sie Ihren Benutzernamen ein: ");
-	scanf("IUsernameLen_scanf", &cUsername[0]);
+	printf("Willkommen bei gotta.\nBitte geben Sie Ihren Benutzernamen ein: ");
+	scanf("%s", &cUsername[0]);
 
 	printf("Bitte geben Sie Ihr Passwort ein: ");
-	scanf("IUserpasswordLen_scanf", &cUserpassword[0]);
+	scanf("%s", &cUserpassword[0]);
 
 	iSocket = socket(AF_INET, SOCK_STREAM, 0);
 
